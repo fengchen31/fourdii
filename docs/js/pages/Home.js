@@ -1,179 +1,91 @@
-/* eslint-disable class-methods-use-this */
 /* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { Component } from 'react';
-import StackGrid, { transitions, easings } from '../../../src/';
-import DemoControl from '../components/DemoControl';
+import React from "react";
+import StackGrid, { transitions, easings } from "../../../src";
 
-const itemModifier = [
-  'pattern1',
-  'pattern2',
-  'pattern3',
-  'gray',
-  'gray-light',
-  'gray-dark',
-  'yellow',
-  'pink',
-  'purple',
-];
+const transition = transitions.scaleDown;
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
+const Home = () => {
+  const images = [
+    { src: "./images/photos/1.jpeg", label: "" },
+    { src: "./images/photos/2.jpeg", label: "" },
+    { src: "./images/photos/3.jpeg", label: "" },
+    { src: "./images/photos/4.jpeg", label: "" },
+    { src: "./images/photos/5.jpeg", label: "" },
+    { src: "./images/photos/6.jpeg", label: "" },
+    { src: "./images/photos/7.jpeg", label: "" },
+    { src: "./images/photos/8.jpeg", label: "" },
+    { src: "./images/photos/9.jpeg", label: "" },
+    { src: "./images/photos/10.jpeg", label: "" },
+    { src: "./images/photos/11.jpeg", label: "" },
+    { src: "./images/photos/12.jpeg", label: "" },
+    { src: "./images/photos/13.jpeg", label: "" },
+    { src: "./images/photos/14.jpeg", label: "" },
+    { src: "./images/photos/15.jpeg", label: "" },
+    { src: "./images/photos/16.jpeg", label: "" },
+    { src: "./images/photos/17.jpeg", label: "" },
+    { src: "./images/photos/18.jpeg", label: "" },
+    { src: "./images/photos/19.jpeg", label: "" },
+    { src: "./images/photos/20.jpeg", label: "" },
+  ];
 
-    const items = [];
-
-    for (let i = 0; i < 10; i += 1) {
-      items.push(this.createItem());
+  // 在 StackGrid 中安插空白圖片
+  const getRandomBlankImages = (count) => {
+    for (let i = 0; i < count; i++) {
+      const blankImageSize = getRandomSize();
+      const randomIndex = getRandomIndex(images.length - 1);
+      images.splice(randomIndex, 0, {
+        src: "",
+        label: "",
+        size: blankImageSize,
+      });
     }
+  };
 
-    this.state = {
-      items,
-      duration: 480,
-      columnWidth: 150,
-      gutter: 5,
-      easing: easings.quartOut,
-      transition: 'fadeDown',
-      rtl: false,
-    };
-  }
+  // 產生隨機尺寸
+  const getRandomSize = () => {
+    const minSize = 100;
+    const maxSize = 300;
+    const size = Math.floor(Math.random() * (maxSize - minSize + 1)) + minSize;
+    return size;
+  };
 
-  createItem() {
-    const id = Math.random().toString(36).substr(2, 9);
-    const height = Math.floor((Math.random() * (300 - 80)) + 80);
-    const modifier = itemModifier[Math.floor(Math.random() * itemModifier.length)];
+  // 取得隨機索引
+  const getRandomIndex = (max) => {
+    return Math.floor(Math.random() * (max + 1));
+  };
 
-    return { id, height, modifier };
-  }
+  getRandomBlankImages(5); // 這裡的數字表示你希望安插多少張空白圖片
 
-  shuffleItems = () => {
-    const newItems = [...this.state.items];
-    let i = newItems.length;
-
-    while (i) {
-      const j = Math.floor(Math.random() * i);
-      const t = newItems[--i]; // eslint-disable-line no-plusplus
-      newItems[i] = newItems[j];
-      newItems[j] = t;
-    }
-
-    this.setState({ items: newItems });
-  }
-
-  prependItem = () => {
-    this.setState({
-      items: [this.createItem(), ...this.state.items],
-    });
-  }
-
-  appendItem = () => {
-    this.setState({
-      items: [...this.state.items, this.createItem()],
-    });
-  }
-
-  multipleAppendItem = () => {
-    const newItems = [];
-
-    for (let i = 0; i < 5; i += 1) {
-      newItems.push(this.createItem());
-    }
-
-    this.setState({
-      items: [...this.state.items, ...newItems],
-    });
-  }
-
-  removeItem = (id) => {
-    this.setState({
-      items: this.state.items.filter(o => o.id !== id),
-    });
-  }
-
-  handleDurationChange = (duration) => {
-    this.setState({ duration });
-  }
-
-  handleColumnWidthChange = (columnWidth) => {
-    this.setState({ columnWidth });
-  }
-
-  handleGutterChange = (gutter) => {
-    this.setState({ gutter });
-  }
-
-  handleEasingChange = (easing) => {
-    this.setState({ easing });
-  }
-
-  handleTransitionChange = (transition) => {
-    this.setState({ transition });
-  }
-
-  handleRTLChange = (rtl) => {
-    this.setState({ rtl });
-  }
-
-  render() {
-    const {
-      items,
-      duration,
-      columnWidth,
-      gutter,
-      easing,
-      transition: transitionSelect,
-      rtl,
-    } = this.state;
-
-    const transition = transitions[transitionSelect];
-    return (
-      <div>
-        <DemoControl
-          duration={duration}
-          columnWidth={columnWidth}
-          gutter={gutter}
-          easing={easing}
-          transition={transition}
-          rtl={rtl}
-          onShuffle={this.shuffleItems}
-          onPrepend={this.prependItem}
-          onAppend={this.appendItem}
-          onMultipleAppend={this.multipleAppendItem}
-          onDurationChange={this.handleDurationChange}
-          onColumnWidthChange={this.handleColumnWidthChange}
-          onGutterChange={this.handleGutterChange}
-          onEasingChange={this.handleEasingChange}
-          onTransitionChange={this.handleTransitionChange}
-          onRTLChange={this.handleRTLChange}
-        />
-
-        <StackGrid
-          duration={duration}
-          columnWidth={columnWidth}
-          gutterWidth={gutter}
-          gutterHeight={gutter}
-          easing={easing}
-          appear={transition.appear}
-          appeared={transition.appeared}
-          enter={transition.enter}
-          entered={transition.entered}
-          leaved={transition.leaved}
-          rtl={rtl}
-          onLayout={() => {
-            console.log('[DEMO] `onLayout()` has been called.'); // eslint-disable-line
-          }}
-        >
-          {items.map(item =>
-            (<div
-              key={item.id}
-              className={`item item--${item.modifier}`}
-              style={{ height: item.height }}
-              onClick={() => this.removeItem(item.id)}
-            />)
+  return (
+    <StackGrid
+      monitorImagesLoaded
+      columnWidth={300}
+      duration={600}
+      gutterWidth={15}
+      gutterHeight={15}
+      easing={easings.cubicOut}
+      appearDelay={60}
+      appear={transition.appear}
+      appeared={transition.appeared}
+      enter={transition.enter}
+      entered={transition.entered}
+      leaved={transition.leaved}
+    >
+      {images.map((obj, index) => (
+        <figure key={index} className="image">
+          {obj.src ? (
+            <img src={obj.src} alt={obj.label} />
+          ) : (
+            <div
+              className="blank-image"
+              style={{ width: obj.size, height: obj.size }}
+            ></div>
           )}
-        </StackGrid>
-      </div>
-    );
-  }
-}
+          <figcaption>{obj.label}</figcaption>
+        </figure>
+      ))}
+    </StackGrid>
+  );
+};
+
+export default Home;
