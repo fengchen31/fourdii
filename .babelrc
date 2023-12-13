@@ -6,6 +6,9 @@
     "stage-1"
   ],
   "plugins": [
-    "react-hot-loader/babel"
+    "react-hot-loader/babel",
+    "file-loader"
   ]
 }
+
+
