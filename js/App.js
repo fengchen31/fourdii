@@ -12,7 +12,6 @@ const App = ({ children }) => (
     >
       SHOP
     </a>
-    <img className="yingyang" src="../images/yingyang.png" alt="logo" />
     <div className="content">{children}</div>
   </div>
 );
