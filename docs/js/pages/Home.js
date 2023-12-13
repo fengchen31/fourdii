@@ -54,7 +54,7 @@ const Home = () => {
     return Math.floor(Math.random() * (max + 1));
   };
 
-  getRandomBlankImages(5); // 這裡的數字表示你希望安插多少張空白圖片
+  getRandomBlankImages(20); // 這裡的數字表示你希望安插多少張空白圖片
 
   return (
     <StackGrid
