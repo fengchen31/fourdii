@@ -267,12 +267,12 @@ button:focus {
 
 
 /* Image */
-.image {
+.grid_item {
   display: block;
   margin: 0;
 }
 
-.image figcaption {
+.grid_item figcaption {
   display: block;
   margin: .2em 0 0;
   font-weight: normal;
