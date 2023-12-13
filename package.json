@@ -16,7 +16,7 @@
     "docs:build": "webpack -p --config docs/webpack.config.production.js",
     "docs:deploy": "npm run docs:build && gh-pages -d docs",
     "prebuild": "npm run clean",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build"   
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/tsuyoshiwada/react-stack-grid/issues"
   },
-  "homepage": "https://github.com/fengchen31/fourdii/blob/master/docs/index.html",
+  "homepage": "https://fengchen31.github.io/fourdii/",
   "files": [
     "lib",
     "test"
@@ -67,7 +67,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.0.1",
     "flow-bin": "^0.50.0",
-    "gh-pages": "^1.0.0",
+    "gh-pages": "^1.2.0",
     "jest": "^21.2.1",
     "rc-slider": "^8.2.0",
     "react": "^15.5.4",
