@@ -1,5 +1,5 @@
 {
-  "name": "react-stack-grid",
+  "name": "fourdii",
   "version": "0.7.1",
   "description": "Pinterest like layout components for React.js",
   "main": "lib/index.js",
@@ -16,11 +16,11 @@
     "docs:build": "webpack -p --config docs/webpack.config.production.js",
     "docs:deploy": "npm run docs:build && gh-pages -d docs",
     "prebuild": "npm run clean",
-    "prepublish": "npm run build"   
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tsuyoshiwada/react-stack-grid.git"
+    "url": "git+https://github.com/fengchen31/fourdii.git"
   },
   "keywords": [
     "react",
@@ -30,11 +30,8 @@
     "pinterest",
     "masonry"
   ],
-  "author": "tsuyoshiwada",
+  "author": "feng",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tsuyoshiwada/react-stack-grid/issues"
-  },
   "homepage": "https://fengchen31.github.io/fourdii/",
   "files": [
     "lib",
