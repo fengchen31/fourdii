@@ -77,11 +77,19 @@
 
 var App = function App(_ref) {
   var children = _ref.children;
-  return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_1__components_Header__["a" /* default */], null), /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+  return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", null, /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
+    className: "yingyang",
+    src: "./images/yingyang.png",
+    alt: "logo"
+  }), /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
     className: "shop",
     href: "https://www.4dimensionapparel.com/products",
     target: "_blank"
-  }, "SHOP"), /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
+  }, "SHOP"), /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h1", null, /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
+    src: "./images/logo.png",
+    alt: "logo",
+    className: "logo"
+  })), /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("div", {
     className: "content"
   }, children));
 };
@@ -145,17 +153,10 @@ var _temp = function () {
 var Header = function Header() {
   return /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("header", {
     className: "header"
-  }, /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
-    className: "yingyang",
-    src: "./images/yingyang.png",
-    alt: "logo"
-  }), /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("h1", null, /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("img", {
-    src: "./images/logo.webp",
-    alt: "logo"
-  })));
+  });
 };
 var _default = Header;
-/* harmony default export */ __webpack_exports__["a"] = (_default);
+/* unused harmony default export */ var _unused_webpack_default_export = (_default);
 ;
 var _temp = function () {
   if (typeof __REACT_HOT_LOADER__ === 'undefined') {
